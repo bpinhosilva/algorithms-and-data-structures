@@ -51,10 +51,25 @@ class ListNode {
 
     return newHead;
   }
+
+  public reverseIteratively(n: ListNode = this): ListNode {
+    let current: ListNode = n;
+    let prev: ListNode | null = null;
+
+    while (current) {
+      let temp: ListNode | null = current.next;
+
+      current.next = prev;
+      prev = current;
+      current = temp;
+    }
+
+    return prev;
+  }
 }
 
 let n: ListNode = new ListNode(1).append(2).append(3);
 
-n = n.reverse();
-
 n.print();
+
+n.reverseIteratively().print();
